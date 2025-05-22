@@ -7,11 +7,53 @@
     <groupId>org.accessok</groupId>
     <artifactId>springboot-example</artifactId>
     <version>1.0-SNAPSHOT</version>
-
+    <packaging>pom</packaging>
+    <modules>
+        <module>tcp</module>
+    </modules>
+    <!--
+    <packaging> 元素用来指定构建项目时生成的包类型。
+    它定义了 Maven 构建工具如何打包项目的最终输出。
+    <packaging>pom</packaging> 的意思是该项目的打包类型是 POM 文件，
+    也就是只生成一个 POM 文件，而不生成 .jar、.war 或其他类型的文件。
+    通常，使用 pom 作为打包类型的项目，可能是作为一个父 POM 或者一个依赖管理的模块，而不是一个实际的应用程序。
+    父 POM 文件通常用于集中管理所有子模块的版本和依赖。
+    -->
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.6</version>
+    </parent>
+    <!--
+    spring-boot-starter-parent 是 Spring Boot 提供的一个父级项目。
+    它的作用是为你的 Spring Boot 项目提供一些默认的配置，简化了构建过程。
+    提供了一些常用依赖的默认版本，避免你在 pom.xml 中手动指定它们的版本。
+    -->
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <!--
+        spring-boot-starter 是 Spring Boot 提供的一个核心起步依赖。
+        它并不是单独的库，而是一个 启动器（starter）。
+        它的作用是简化 Spring Boot 项目的配置，
+        自动引入一系列常用的依赖，使开发者能够专注于业务逻辑而无需手动配置依赖。
+        -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
